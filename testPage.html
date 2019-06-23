@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script> 
+		<script type="text/javascript" src="./js/prng.js"></script>
+		<script type="text/javascript" src="./js/fisher-yates_shuffle.js"></script>
+		
+		<style>
+		input {
+		  width: 300px;
+		} 
+		</style>
+	</head>
+<body>
+	<table>
+	  <tr>
+		<th>Text:</th>
+		<th><input type="text" id="textbox_text" value="asdfghj"></th>
+	  </tr>
+	  <tr>
+		<th>Key (integer):</th>
+		<th><input type="text" id="textbox_key" value="123456"></th>
+	  </tr>
+	  <tr>
+	    <th><button id="button_shuffle" type="button">Shuffle</button></th>
+	  </tr>
+	  <tr>
+	    <th>Shuffled Text:</th> 
+		<th><input type="text" id="textbox_shuffled"></th> 
+	  </tr>
+	  <tr>
+		<th>Decode Key:</th>
+		<th><input type="text" id="textbox_decode_key" value="123456"></th>
+	  </tr>
+	  <tr>
+	    <th><button id="button_decode" type="button">Decode</button></th>
+	  </tr>
+	  <tr>
+	    <th>Decoded Text:</th>
+		<th><input type="text" id="textbox_decoded"></th>
+	  </tr>
+	</table>
+	
+	
+	 
+	  
+	
+
+	<script>
+		document.getElementById("button_shuffle").addEventListener("click", shuffle_Button_click);
+
+		function shuffle_Button_click() {
+			var text = $('#textbox_text').val();
+			var key = $('#textbox_key').val();
+			var shuffled_text = shuffle_string(text,key);
+			
+			$('#textbox_shuffled').val(shuffled_text);
+		}
+		
+		document.getElementById("button_decode").addEventListener("click", decode_Button_click);
+
+		function decode_Button_click() {
+			var text = $('#textbox_shuffled').val();
+			var key = $('#textbox_decode_key').val();
+			var decoded_text = decode_string(text,key);
+			
+			$('#textbox_decoded').val(decoded_text);
+		}
+	</script>
+
+</body>
+</html>
+
